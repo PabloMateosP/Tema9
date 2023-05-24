@@ -1,14 +1,20 @@
 package Actividades;
 
+import Ejemplo.MiComponeneteAWTinterno;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class Actividad1_Login extends Frame{
-
-    Actividad1_Login() {
+public class Actividad2_Login {
+    Actividad2_Login() {
 
         Frame f = new Frame();
+        f.setBackground(Color.lightGray);
+
+        Frame b = new Frame();
         f.setBackground(Color.lightGray);
 
 
@@ -49,23 +55,38 @@ public class Actividad1_Login extends Frame{
 
         f.setVisible(true);
 
-        enter.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String username = textoNombre.getText();
-                String password = textoPass.getText();
+        Dialog d = new Dialog(b , "Bienvenido !!", false);
+        d.setLayout(null);
+        d.setSize(200, 200);
+        Label a = new Label("Bienvenido !!");
+        a.setBounds(20, 20, 100,100);
+        a.setVisible(true);
+        d.add(a);
+        d.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                d.dispose();
 
-                // Aquí se puede agregar la lógica de autenticación
-                if (username.equals("Pablo") && password.equals("matpalpa")) {
-                    System.out.println("Inicio de sesion exitoso");
-                } else {
-                    System.out.println("Nombre de usuario o contraseña incorrectos");
-                }
             }
         });
-        
+
+        enter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                d.setVisible(true);
+                f.dispose();
+            }
+        });
+
         cancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                textoNombre.setText(null);
+                textoPass.setText(null);
+            }
+        });
+        f.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                f.dispose();
             }
         });
     }
@@ -73,6 +94,6 @@ public class Actividad1_Login extends Frame{
     public static void main(String args[]) {
 
         // creating instance of Frame class
-        Actividad1_Login awt_obj = new Actividad1_Login();
+        Actividad2_Login awt_obj = new Actividad2_Login();
     }
 }
