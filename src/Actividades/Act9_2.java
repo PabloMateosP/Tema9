@@ -14,7 +14,8 @@ public class Act9_2 {
 
         Panel panelLogin = new Panel();
         //He añadido un panel para ponerlo como layout y así declarar 3 filas y dos columnas para los métodos
-        //De esta forma consigo ordenar el te
+        //De esta forma consigo ordenar el Label del nombre y de la pasword a la misma altura que el campo
+        // texto de estos.
         panelLogin.setLayout(new GridLayout(3, 2, 10, 10));
 
         Label nombre = new Label("Nombre:");
