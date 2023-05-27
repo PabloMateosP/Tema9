@@ -40,6 +40,33 @@ public class Act9_2 {
 
         primerFrameLogin.setSize(400, 300);
         primerFrameLogin.setTitle("Login");
+
+        MenuBar menuBar = new MenuBar();
+        Menu opcionesMenu = new Menu("Opciones");
+        MenuItem limpiarItem = new MenuItem("Limpiar formulario");
+        MenuItem salirItem = new MenuItem("Salir");
+        Menu opcionAyuda = new Menu("Ayuda");
+
+        // Agregar los items al menú
+        opcionesMenu.add(limpiarItem);
+        opcionesMenu.add(salirItem);
+        menuBar.add(opcionAyuda);
+        menuBar.add(opcionesMenu);
+
+        primerFrameLogin.setMenuBar(menuBar);
+
+        limpiarItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                textoNombre.setText("");
+                textoPass.setText("");
+            }
+        });
+        salirItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
         primerFrameLogin.setVisible(true);
 
         Dialog dialogoBienvenida = new Dialog(segundoFrameBienvenida, "Bienvenido !!", false);
@@ -79,6 +106,6 @@ public class Act9_2 {
     }
 
     public static void main(String args[]) {
-        Actividad2_Login awt_obj = new Actividad2_Login();
+        new Act9_2();
     }
 }
